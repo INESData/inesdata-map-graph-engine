@@ -1,19 +1,18 @@
-[tool.black]
-line-length = 79
-include = '\.pyi?$'
-exclude = '''
-/(
-    \.git
-  | \.hg
-  | \.mypy_cache
-  | \.tox
-  | \.venv
-  | _build
-  | buck-out
-  | build
-  | dist
-  | setup.cfg
-  | setup.py
-  | sonar-project.properties
-)/
-'''
+[build-system]
+requires = ["setuptools>=42", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "kg-generation"
+version = "0.1.0"
+description = "A package to generate graphs."
+authors = [{name = "Tu Nombre", email = "tuemail@example.com"}]
+dependencies = []
+
+[tool.setuptools]
+packages = ["kg_generation"]
+
+[tool.setuptools.entry-points]
+console_scripts = [
+    "kg-generation = kg_generation.graph_generator:main"
+]

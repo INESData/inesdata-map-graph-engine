@@ -1,5 +1,50 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "kg-generation"
+dynamic = ["version", "dependencies"]
+requires-python = ">=3.10"
+description = "kg-generation"
+authors = [{ name = "" }] 
+classifiers = [
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Topic :: Software Development",
+  "Topic :: Software Development :: Libraries",
+  "Topic :: Software Development :: Libraries :: Python Modules",
+]
+
+#[project.urls]
+#repository = "" TODO: add project url
+
+[tool.setuptools.dynamic]
+version = { attr = "kg_generation.__version__" }
+dependencies = { file = "requirements/requirements.txt" }
+
+[tool.setuptools.packages.find]
+include = ["kg_generation", "kg_generation.*"]
+namespaces = false
+
+[tool.pytest.ini_options]
+filterwarnings = "ignore::DeprecationWarning"
+addopts = "-v"
+testpaths = ["tests", "integration"]
+
+[tool.isort]
+multi_line_output = 3
+include_trailing_comma = true
+force_grid_wrap = 0
+use_parentheses = true
+line_length = 99
+profile = "black"
+
 [tool.black]
-line-length = 79
+line-length = 99
 include = '\.pyi?$'
 exclude = '''
 /(
@@ -12,27 +57,46 @@ exclude = '''
   | buck-out
   | build
   | dist
-  | setup.cfg
-  | setup.py
   | sonar-project.properties
 )/
 '''
 
-[build-system]
-requires = ["setuptools>=42", "wheel"]
-build-backend = "setuptools.build_meta"
+[tool.ruff]
+lint.select = ["E", "F"]
+line-length = 99
+exclude = [
+  ".bzr",
+  ".direnv",
+  ".eggs",
+  ".git",
+  ".hg",
+  ".mypy_cache",
+  ".nox",
+  ".pants.d",
+  ".pytype",
+  ".ruff_cache",
+  ".svn",
+  ".tox",
+  ".venv",
+  "__pypackages__",
+  "_build",
+  "buck-out",
+  "build",
+  "dist",
+  "node_modules",
+  "venv",
+]
+lint.ignore = [
+  "E501", # Line too long, handled by black
+]
+lint.ignore-init-module-imports = true
 
-[project]
-name = "kg-generation"
-version = "0.1.0"
-description = "A package to generate graphs."
-authors = [{name = "Tu Nombre", email = "tuemail@example.com"}]
-dependencies = []
+[tool.ruff.lint.mccabe]
+max-complexity = 10
 
-[tool.setuptools]
-packages = ["kg_generation"]
-
-[tool.setuptools.entry-points]
-console_scripts = [
-    "kg-generation = kg_generation.graph_generator:main"
+[tool.pydocstyle]
+convention = "google"
+add-ignore = [
+  "D100", # Missing docstring in public module
+  "D104", # Missing docstring in public package
 ]

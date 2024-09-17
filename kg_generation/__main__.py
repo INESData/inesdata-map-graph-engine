@@ -1,7 +1,8 @@
-import os.path
-import morph_kgc as mkgc
-import subprocess
 import argparse
+import os.path
+import subprocess
+
+import morph_kgc as mkgc
 
 
 def generate_graph(mappings_path: str, output_path: str, db_url: str=None):
@@ -29,9 +30,10 @@ def generate_graph(mappings_path: str, output_path: str, db_url: str=None):
         f = open(output_path, 'x')
     # g = mkgc.materialize(config)
     # g.parse(output_path)
-    subprocess.run(["python3", "-m", "morph_kgc", 'config.ini'])
+    proc = subprocess.run(["python3", "-m", "morph_kgc", 'config.ini'])
     
-    # print(f'Knowledge Graph generated: {output_path}')
+    print(f'Knowledge Graph generated: {output_path}')
+    return proc.returncode
 
     
 def main():
@@ -46,7 +48,10 @@ def main():
     output_path = args.output_path
     db_url = args.db_url
 
-    generate_graph(mappings_path, output_path, db_url)
+    returncode = generate_graph(mappings_path, output_path, db_url)
+    print(f"exit code: {returncode}")
+    
+    return returncode
     
     
 if __name__ == "__main__":

@@ -30,7 +30,7 @@ def generate_graph(mappings_path: str, output_path: str, db_url: str=None):
         f = open(output_path, 'x')
     # g = mkgc.materialize(config)
     # g.parse(output_path)
-    proc = subprocess.run(["python3", "-m", "morph_kgc", 'config.ini'])
+    proc = subprocess.run(["python3", "-m", "morph_kgc", 'config.ini'], check=True)
     
     print(f'Knowledge Graph generated: {output_path}')
     return proc.returncode

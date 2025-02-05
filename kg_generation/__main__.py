@@ -22,8 +22,8 @@ def generate_graph(mappings_path: str, output_path: str, db_url: str=None, db_us
         """
     else:
         config += f"""
-        [DataSource]
-        mappings: {mappings_path}
+    [DataSource]
+    mappings: {mappings_path}
         """
     print(config)
     # save config.ini file

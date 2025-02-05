@@ -12,11 +12,12 @@ def generate_graph(mappings_path: str, output_path: str, db_url: str=None, db_us
     """
     # if input data source is DB, add its connection url
     if db_url:
+        db_driver, db_url_rest = db_url.split("://")
+        db_driver = db_driver.replace(":", "+")
+        print(f"{db_driver}://{db_user}:{db_pass}@{db_url_rest}")
         config += f"""
     [DataSource]
-    db_url: {db_url}
-    db_user: {db_user}
-    db_password: {db_pass}
+    db_url: {db_driver}://{db_user}:{db_pass}@{db_url_rest}
     mappings: {mappings_path}
         """
     else:

@@ -13,11 +13,11 @@ def generate_graph(mappings_path: str, output_path: str, db_url: str=None, db_us
     # if input data source is DB, add its connection url
     if db_url:
         config += f"""
-        [DataSource]
-        mappings: {mappings_path}
-        db_url: {db_url}
-        db_user: {db_user}
-        db_password: {db_pass}
+    [DataSource]
+    db_url: {db_url}
+    db_user: {db_user}
+    db_password: {db_pass}
+    mappings: {mappings_path}
         """
     else:
         config += f"""

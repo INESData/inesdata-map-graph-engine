@@ -4,8 +4,12 @@
 #
 #    pip-compile requirements/requirements.in
 #
+cffi==1.17.1
+    # via cryptography
 contourpy==1.3.0
     # via matplotlib
+cryptography==42.0.8
+    # via morph-kgc
 cycler==0.12.1
     # via matplotlib
 duckdb==1.0.0
@@ -26,7 +30,7 @@ kiwisolver==1.4.7
     # via matplotlib
 matplotlib==3.8.4
     # via -r requirements/requirements.in
-morph-kgc==2.7.0
+morph-kgc[mysql]==2.7.0
     # via -r requirements/requirements.in
 numpy==2.1.1
     # via
@@ -39,6 +43,10 @@ pandas==2.2.2
     # via morph-kgc
 pillow==10.4.0
     # via matplotlib
+pycparser==2.22
+    # via cffi
+pymysql==1.1.1
+    # via morph-kgc
 pyoxigraph==0.3.22
     # via morph-kgc
 pyparsing==3.1.4
@@ -63,8 +71,12 @@ six==1.16.0
     # via
     #   isodate
     #   python-dateutil
+sql-metadata==2.15.0
+    # via morph-kgc
 sqlalchemy==2.0.38
-    # via -r requirements/requirements.in
+    # via morph-kgc
+sqlparse==0.5.3
+    # via sql-metadata
 typing-extensions==4.12.2
     # via sqlalchemy
 tzdata==2024.1

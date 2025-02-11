@@ -13,7 +13,7 @@ python3 -m kg_generation -m data/input/mappings/gtfs-xml.rml.ttl -o data/output/
 o
 
 ```bash
-python3 -m kg_generation -m data/input/mappings/gtfs-xml.rml.ttl -o data/output/knowledge-graph-xml.nt -db jdbc:mysql://localhost:3306/lubm4obda -dbu root -dbp root
+python3 -m kg_generation -m data/input/mappings/mapping_oli.ttl -o data/output/knowledge-graph-db.nt -db jdbc:mysql://localhost:3306/lubm4obda -dbu root -dbp root
 ```
 
 Los argumentos son los siguientes:

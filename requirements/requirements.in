@@ -1,4 +1,3 @@
 morph-kgc[mysql]==2.7.0
 rdflib==7.0.0
 matplotlib==3.8.4
-sqlalchemy==2.0.38
